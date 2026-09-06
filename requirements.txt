@@ -1,0 +1,24 @@
+# Core LangChain packages
+langchain==1.4.0
+langchain-classic==1.0.8
+langchain-community==0.4.2
+langchain-huggingface==1.2.2
+langchain-text-splitters==1.1.2
+
+# PDF loading, embeddings, and vector search
+pymupdf==1.28.2
+faiss-cpu==1.15.0
+sentence-transformers==6.0.1
+
+# Hugging Face / PyTorch runtime
+huggingface-hub==1.30.0
+torch==2.14.0
+torchvision==0.29.0
+
+# Streamlit application and environment configuration
+streamlit==1.63.0
+python-dotenv==1.2.3
+
+# Testing
+pytest==8.1.1
+pytest-mock==3.14.0

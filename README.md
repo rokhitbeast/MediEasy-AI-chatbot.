@@ -20,13 +20,14 @@ The Streamlit interface displays the answer and the source chunks used for retri
 ```text
 MediEasy/
 |-- Data/                         # Source PDF files
-|-- vectorstore/db_faiss/        # Generated FAISS index
+|-- vectorstore/db_faiss/        # Generated FAISS index (ignored by Git)
 |-- create_memory_for_llm.py      # Build the document index
 |-- MedibotUI.py                  # Run the Streamlit application
 |-- connect_memory_with_llm.py    # Command-line retrieval test
 |-- requirements.txt              # Python dependencies
 |-- Pipfile                       # Pipenv dependency declarations
 |-- .env                          # Local secrets; do not commit
+|-- .gitignore                    # Local and generated files excluded from Git
 ```
 
 ## Requirements
@@ -77,6 +78,8 @@ Place one or more `.pdf` files in `Data/`, then run:
 
 This creates or replaces the FAISS files under `vectorstore/db_faiss/`. Re-run this command whenever the source PDFs change.
 
+The source files in `Data/` and the generated FAISS index are excluded by `.gitignore`. Each local checkout must provide its own PDFs and rebuild the index.
+
 The current index uses:
 
 - Chunk size: 500 characters
@@ -104,6 +107,18 @@ After building the vector store and configuring `HF_TOKEN`, run:
 ```
 
 Enter a question when prompted.
+
+## Git And Local Files
+
+The repository ignores files that are local, sensitive, or generated during development:
+
+- `.env` and Streamlit secrets
+- Virtual environments and Python cache directories
+- Test coverage, build, packaging, and log files
+- The generated `vectorstore/db_faiss/` index
+- PDF, CSV, and DOCX files placed in `Data/`
+
+Keep credentials and private medical documents out of version control. The included `.env.example` can be used as a safe template for required environment variables.
 
 ## Answering Behavior
 
